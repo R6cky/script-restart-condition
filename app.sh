@@ -13,13 +13,13 @@ MEM_USO=$(free | awk '/Mem/ {printf("%.0f"), $3/$2 * 100}')
 
 echo "CPU: $CPU_USO% | MEM: $MEM_USO%"
 
-# # Verifica limites
-# if [ "$CPU_USO" -ge "$CPU_LIMITE" ]; then
-# #    echo "CPU acima de $CPU_LIMITE%, reiniciando..."
-#     /usr/sbin/reboot
-# fi
+ # Verifica limites
+if [ "$CPU_USO" -ge "$CPU_LIMITE" ]; then
+    echo "CPU acima de $CPU_LIMITE%, reiniciando..."
+     /usr/sbin/reboot
+fi
 
-# if [ "$MEM_USO" -ge "$MEM_LIMITE" ]; then
-#     echo "Memória acima de $MEM_LIMITE%, reiniciando..."
-#     /usr/sbin/reboot
-# fi
+if [ "$MEM_USO" -ge "$MEM_LIMITE" ]; then
+     echo "Memória acima de $MEM_LIMITE%, reiniciando..."
+     /usr/sbin/reboot
+ fi
